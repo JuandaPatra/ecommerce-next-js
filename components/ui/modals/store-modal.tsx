@@ -3,6 +3,13 @@
 import { useStoreModalStore } from "@/hooks/use-store-modal"
 import { Modal } from "../modal"
 
+import * as z from 'zod';
+
+
+// const formSchema =z.object({
+//     name:   
+// })
+
 export const StoreModal = () => {
     const storeModal = useStoreModalStore();
     return (

@@ -2,14 +2,23 @@
 import {Button} from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import { Modal } from "@/components/ui/modal";
+import { useStoreModalStore } from "@/hooks/use-store-modal";
+import { useEffect } from "react";
 
 const SetupPage=()=> {
+
+  const onOpen = useStoreModalStore((state)=>state.onOpen)
+  const isOpen = useStoreModalStore((state)=> state.isOpen)
+
+  useEffect(()=>{
+    if(!isOpen){
+      onOpen()
+    }
+
+  },[isOpen, onOpen])
   return (
    <div className="p-4">
-    <Modal title="tes Modal title" description="tes Modal description" isOpen={true} onClose={() => {}}>
-        <h1>Judul</h1>
-        <h2>Apakah ini adalah isi</h2>
-    </Modal>
+    Root Page
    </div>
   );
 }
