@@ -1,7 +1,5 @@
 'use client';
-import {Button} from "@/components/ui/button";
-import { UserButton } from "@clerk/nextjs";
-import { Modal } from "@/components/ui/modal";
+
 import { useStoreModalStore } from "@/hooks/use-store-modal";
 import { useEffect } from "react";
 
