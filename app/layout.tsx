@@ -9,6 +9,7 @@ import {
   // UserButton
 } from '@clerk/nextjs'
 import { ModalProvider } from "@/provider/modal-provider";
+import db from "@/lib/db";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,6 +32,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  // const store = db.store.create({
+
+  // })
   return (
     <ClerkProvider>
     <html lang="en">
