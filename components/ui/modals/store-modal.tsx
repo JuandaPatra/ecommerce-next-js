@@ -9,17 +9,40 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormField, FormItem, FormLabel } from "../form";
 import { Input } from "../input";
 import { Button } from "../button";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   name: z.string().min(1),
 });
 
-const onSubmit = async (values: z.infer<typeof formSchema>) => {
-  console.log(values);
-};
 
 export const StoreModal = () => {
   const storeModal = useStoreModalStore();
+
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log(values);
+   
+    try {
+      setLoading(true);
+      const response = await axios.post('/api/stores', values);
+
+      // window.location.assign(`/${response.data.id}`);
+      console.log(response)
+      toast.success("Berhasil input ")
+      
+    } catch (error) {
+      console.log(error)
+      toast.error("Gagal input ")
+    }finally{
+      setLoading(false)
+    }
+  
+  };
+  
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -52,7 +75,7 @@ export const StoreModal = () => {
               />
               <div className="px-3 pt-3 space-x-2 flex justify-end w-full">
                 <Button variant={"outline"} onClick={storeModal.onClose}>Cancel</Button>
-                <Button type="submit">Continue</Button>
+                <Button type="submit"  disabled={loading}>Continue</Button>
               </div>
             </form>
           </Form>
