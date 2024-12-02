@@ -5,6 +5,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/appSidebar";
 import { useStoreModalStore } from "@/hooks/use-store-modal";
 import { useEffect } from "react";
+import { UserButton } from "@clerk/nextjs";
 
 const SetupPage= ()=> {
 
@@ -20,6 +21,7 @@ const SetupPage= ()=> {
   return (
    <div className="p-4">
     Root Page
+    {/* <UserButton afterSwitchSessionUrl="/" /> */}
     <SidebarProvider>
       <AppSidebar />
       <main>

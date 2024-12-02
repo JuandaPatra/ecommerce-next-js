@@ -1,15 +1,19 @@
 import db from "@/lib/db"
+import { redirect } from "next/navigation";
 
 const DashboardPage=async({params}:{params:{storeId:string}})=>{
-    const store = await db.store.findFirst({where:{id:params.storeId}});
+    console.log(params)
+    const store = await db.store.findFirst({where:{id:params?.storeId}});
+
+    if(!store){
+        redirect('sign-in');
+    }
     return(
 
 
         <div>
-
-            {store?.name}
-
-            this is dashboard page
+            Nama Toko : {""}
+            {store?.name ?? "unknown store"}
         </div>
     )
 }

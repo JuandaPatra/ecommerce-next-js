@@ -11,6 +11,7 @@ import {
 import { ModalProvider } from "@/provider/modal-provider";
 import db from "@/lib/db";
 import { ToasterProvider } from "@/provider/toast-provider";
+import { Navbar } from "@/components/ui/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -45,6 +46,8 @@ export default function RootLayout({
       >
         <ToasterProvider />
         <ModalProvider />
+
+        <Navbar />
         {children}
       </body>
     </html>
