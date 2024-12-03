@@ -1,5 +1,6 @@
 import db from "@/lib/db"
 import { redirect } from "next/navigation";
+import { SettingForm } from "./settings/components/setting-forms";
 
 const DashboardPage=async({params}:{params:{storeId:string}})=>{
     console.log(params)
@@ -11,7 +12,8 @@ const DashboardPage=async({params}:{params:{storeId:string}})=>{
     return(
 
 
-        <div>
+        <div className="px-4 py-3">
+            <SettingForm initialData={store} />
             Nama Toko : {""}
             {store?.name ?? "unknown store"}
         </div>
